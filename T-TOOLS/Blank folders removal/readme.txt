@@ -1,0 +1,1 @@
+Blank folders removal is a small tool helps user to remove all invalid folder inside a target folder.
