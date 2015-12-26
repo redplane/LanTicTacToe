@@ -1,0 +1,8 @@
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\bin\Debug\ServiceLayer.exe.config
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\bin\Debug\ServiceLayer.exe
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\bin\Debug\ServiceLayer.pdb
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\bin\Debug\SharedLayer.dll
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\bin\Debug\SharedLayer.pdb
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\obj\Debug\ServiceLayer.csprojResolveAssemblyReference.cache
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\obj\Debug\ServiceLayer.exe
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\ServiceLayer\obj\Debug\ServiceLayer.pdb

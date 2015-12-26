@@ -1,0 +1,16 @@
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\bin\Debug\ClientLayer.exe.config
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\bin\Debug\ClientLayer.exe
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\bin\Debug\ClientLayer.pdb
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\GUI\Windows\MainWindow.baml
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\GUI\Dialogs\CreateGameDialog.g.cs
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\GUI\Windows\MainWindow.g.cs
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\App.g.cs
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\ClientLayer_MarkupCompile.cache
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\ClientLayer_MarkupCompile.lref
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\GUI\Dialogs\CreateGameDialog.baml
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\ClientLayer.g.resources
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\ClientLayer.Properties.Resources.resources
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\ClientLayer.csproj.GenerateResource.Cache
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\ClientLayer.exe
+C:\Users\Aka\Documents\Visual Studio 2015\Projects\TicTacToe\ClientLayer\obj\Debug\ClientLayer.pdb

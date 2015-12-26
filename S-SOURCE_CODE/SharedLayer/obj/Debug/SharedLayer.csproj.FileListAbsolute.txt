@@ -1,0 +1,4 @@
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\SharedLayer\bin\Debug\SharedLayer.dll
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\SharedLayer\bin\Debug\SharedLayer.pdb
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\SharedLayer\obj\Debug\SharedLayer.dll
+c:\users\aka\documents\visual studio 2015\Projects\TicTacToe\SharedLayer\obj\Debug\SharedLayer.pdb
