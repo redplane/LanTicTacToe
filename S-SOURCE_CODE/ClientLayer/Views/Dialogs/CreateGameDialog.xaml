@@ -4,13 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:ClientLayer.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:xtendedToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Start as host" 
         Height="200" 
-        Width="500">
+        Width="300"
+        WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
-        <viewModel:CreateGameViewModel x:Name="CreateGameViewModel"/>
+        <viewModel:CreateGameViewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -19,10 +22,26 @@
         </Grid.RowDefinitions>
 
         <VirtualizingStackPanel>
+            
             <TextBlock Text="Server port"/>
-            <TextBox Text="{Binding ServerPort}"></TextBox>
+            <xtendedToolkit:IntegerUpDown Value="{Binding ServerPort}"
+                                          Minimum="1024"
+                                          Maximum="30000"/>
+
+            <TextBlock Text="Horizontal blocks"/>
+            <xtendedToolkit:IntegerUpDown Value="{Binding HorizontalBlocks}"
+                                          Minimum="1"
+                                          Maximum="100"
+                                          AllowTextInput="False"/>
+
+            <TextBlock Text="Vertical blocks"/>
+            <xtendedToolkit:IntegerUpDown Value="{Binding VerticalBlocks}"
+                                          Minimum="1"
+                                          Maximum="100"
+                                          AllowTextInput="False"/>
+            
             <TextBlock Margin="0, 30, 0, 0"
-                       Text="{Binding ErrorMessage}"
+                       Text="{Binding ErrorMessage, Mode=OneWay}"
                        TextAlignment="Center"
                        Foreground="Red"
                        FontWeight="Heavy"/>
@@ -30,8 +49,16 @@
 
         <Button Grid.Row="1"
                 Height="32"
-                Width="64">
-            Start
+                Width="{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight}"
+                Style="{StaticResource ChromelessButtonStyle}">
+            <Button.Background>
+                <ImageBrush ImageSource="/ClientLayer;component/Resources/Media/Images/Confirm.png"/>
+            </Button.Background>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding CommandStartServer}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </Button>
     </Grid>
 </Window>
