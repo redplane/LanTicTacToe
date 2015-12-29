@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows;
 using ClientLayer.Helpers;
 using GalaSoft.MvvmLight.Command;
 
@@ -113,7 +114,7 @@ namespace ClientLayer.ViewModels
         /// <summary>
         /// Holds the function which will be fired when start button is clicked.
         /// </summary>
-        public RelayCommand CommandStartServer { get; private set; }
+        public RelayCommand<Window> CommandConfirmSettings { get; private set; }
 
         #endregion
 
@@ -126,19 +127,19 @@ namespace ClientLayer.ViewModels
         public CreateGameViewModel()
         {
             // Reset all properties.
-            _serverPort = MainHelper.Instance.ServerPort;
-            _errorMessage = "";
-            _horizontalBlocks = MainHelper.Instance.HorizontalBlocks;
-            _verticalBlocks = MainHelper.Instance.VerticalBlocks;
+            //_serverPort = MainHelper.Instance.ServerPort;
+            //_errorMessage = "";
+            //_horizontalBlocks = MainHelper.Instance.HorizontalBlocks;
+            //_verticalBlocks = MainHelper.Instance.VerticalBlocks;
 
             // Command registration.
-            CommandStartServer = new RelayCommand(StartServer);
+            CommandConfirmSettings = new RelayCommand<Window>(ConfirmSettings);
         }
         
         /// <summary>
         /// This function is used for starting server.
         /// </summary>
-        private void StartServer()
+        private void ConfirmSettings(Window srcDialog)
         {
             try
             {
@@ -146,13 +147,16 @@ namespace ClientLayer.ViewModels
                 ErrorMessage = "";
                 
                 // Update server port.
-                MainHelper.Instance.ServerPort = _serverPort;
+                //MainHelper.Instance.ServerPort = _serverPort;
 
+                srcDialog.DialogResult = true;
             }
             catch (Exception)
             {
                 // Display an error message to screen.
                 ErrorMessage = "An error occured while starting server. Please try again";
+
+                srcDialog.DialogResult = false;
             }
         }
 

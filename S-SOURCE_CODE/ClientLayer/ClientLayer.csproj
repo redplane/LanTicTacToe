@@ -94,13 +94,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\MainHelper.cs" />
+    <Compile Include="Converters\ReverseBooleanConverter.cs" />
+    <Compile Include="Helpers\ClientHelper.cs" />
+    <Compile Include="Models\ClientInfo.cs" />
     <Compile Include="ViewModels\CreateGameViewModel.cs" />
     <Page Include="Resources\Styles\Controls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\CreateGameDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\HostConnectDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,8 +118,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\Dialogs\CreateGameDialog.xaml.cs">
       <DependentUpon>CreateGameDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\HostConnectDialog.xaml.cs">
+      <DependentUpon>HostConnectDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -149,7 +159,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\SharedLayer\SharedLayer.csproj">
+      <Project>{c4b22c30-56e8-4ef1-b153-19bc8899923c}</Project>
+      <Name>SharedLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Media\Images\Confirm.png" />
