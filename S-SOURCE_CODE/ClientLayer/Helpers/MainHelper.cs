@@ -1,30 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClientLayer.Helpers
+﻿namespace ClientLayer.Helpers
 {
-    /// <summary>
-    /// This helper class is for retrieving/storing information which will be accessed through all game section.
-    /// </summary>
-    internal class MainHelper
+    public class MainHelper
     {
-        #region Private properties
-
-        /// <summary>
-        /// Static instance of MainHelper.
-        /// </summary>
         private static MainHelper _instance;
-        
-        #endregion
 
-        #region Public properties
-
-        /// <summary>
-        /// Retrieve static instance of MainHelper.
-        /// </summary>
         public static MainHelper Instance
         {
             get
@@ -36,25 +15,32 @@ namespace ClientLayer.Helpers
             }
         }
 
+        public bool IsProcess { get; set; } = false;
+        
         /// <summary>
-        /// Port of server to which client will connect.
-        /// By default, server will be opened at port 27015.
+        /// IpAddress of server to which client connects.
         /// </summary>
-        public int ServerPort { get; set; } = 27015;
-
-        /// <summary>
-        /// Number of blocks appear in a row.
-        /// By default, 3 blocks appear in a row.
-        /// </summary>
-        public int HorizontalBlocks { get; set; } = 3;
+        public string IpAddress { get; set; } = "127.0.0.1";
 
         /// <summary>
-        /// Number of blocks appear in a column.
-        /// By default, 3 blocks appear in a column.
+        /// Port of server to which client connects.
         /// </summary>
-        public int VerticalBlocks { get; set; } = 3;
+        public int Port { get; set; } = 27020;
 
-        #endregion
+        /// <summary>
+        /// Number of blocks appears vertically and horizontally.
+        /// </summary>
+        public int Blocks { get; set; } = 3;
 
+
+        public delegate void GameCreatedHandler();
+
+        public event GameCreatedHandler OnGameCreated;
+
+        public void FireEventGameCreated()
+        {
+            if (OnGameCreated != null)
+                OnGameCreated();
+        }
     }
 }

@@ -51,7 +51,12 @@
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -96,6 +101,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\ReverseBooleanConverter.cs" />
     <Compile Include="Helpers\ClientHelper.cs" />
+    <Compile Include="Helpers\MainHelper.cs" />
     <Compile Include="Models\ClientInfo.cs" />
     <Compile Include="ViewModels\CreateGameViewModel.cs" />
     <Page Include="Resources\Styles\Controls.xaml">
@@ -159,13 +165,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharedLayer\SharedLayer.csproj">
-      <Project>{c4b22c30-56e8-4ef1-b153-19bc8899923c}</Project>
-      <Name>SharedLayer</Name>
-    </ProjectReference>
+    <Resource Include="Resources\Media\Images\Confirm.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Media\Images\Confirm.png" />
+    <Folder Include="Views\Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedLayer\SharedLayer.csproj">
+      <Project>{7407daeb-52ff-4f54-ae54-af6cdb88b07c}</Project>
+      <Name>SharedLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

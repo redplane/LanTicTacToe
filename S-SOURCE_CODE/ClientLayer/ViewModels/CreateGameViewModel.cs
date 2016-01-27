@@ -10,26 +10,11 @@ namespace ClientLayer.ViewModels
     {
 
         #region Variables
-
-        /// <summary>
-        /// Store port of server.
-        /// </summary>
-        private int _serverPort;
-
+        
         /// <summary>
         /// Store message of error happened.
         /// </summary>
         private string _errorMessage;
-
-        /// <summary>
-        /// Setting how many blocks can appear in a row.
-        /// </summary>
-        private int _horizontalBlocks;
-
-        /// <summary>
-        /// Setting how many blocks can appear in a column.
-        /// </summary>
-        private int _verticalBlocks;
         
         /// <summary>
         /// This event is used for firing PropertyChanged 
@@ -45,15 +30,10 @@ namespace ClientLayer.ViewModels
         /// </summary>
         public int ServerPort
         {
-            get { return _serverPort; }
+            get { return MainHelper.Instance.Port; }
             set
             {
-                // Nothing has been changed. Do nothing.
-                if (_serverPort != null && _serverPort.Equals(value))
-                    return;
-
-                // Update server port.
-                _serverPort = value;
+                MainHelper.Instance.Port = value;
 
                 // Notify this property has been changed.
                 NotifyPropertyChanged("ServerPort");
@@ -83,41 +63,39 @@ namespace ClientLayer.ViewModels
         /// <summary>
         /// Retrieve/Set number of blocks appear in a row.
         /// </summary>
-        public int HorizontalBlocks
+        public int Blocks
         {
-            get { return _horizontalBlocks; }
+            get { return MainHelper.Instance.Blocks; }
             set
             {
                 // Update new setting.
-                _horizontalBlocks = value;
+                MainHelper.Instance.Blocks = value;
 
                 // Notify another control this value has been changed.
-                NotifyPropertyChanged("HorizontalBlocks");
+                NotifyPropertyChanged("Blocks");
             }
         }
-
+        
         /// <summary>
-        /// Retrieve/Set number of blocks appear in a column.
+        /// IP Address of server
         /// </summary>
-        public int VerticalBlocks
+        public string IpAddress
         {
-            get { return _verticalBlocks; }
+            get { return MainHelper.Instance.IpAddress; }
             set
             {
-                // Update new setting.
-                _verticalBlocks = value;
-
-                // Notify another control this value has been changed.
-                NotifyPropertyChanged("VerticalBlocks");
+                MainHelper.Instance.IpAddress = value;
+                NotifyPropertyChanged("IpAddress");
             }
         }
+
         /// <summary>
         /// Holds the function which will be fired when start button is clicked.
         /// </summary>
         public RelayCommand<Window> CommandConfirmSettings { get; private set; }
 
         #endregion
-
+        
         #region Methods
 
         /// <summary>
@@ -131,7 +109,7 @@ namespace ClientLayer.ViewModels
             //_errorMessage = "";
             //_horizontalBlocks = MainHelper.Instance.HorizontalBlocks;
             //_verticalBlocks = MainHelper.Instance.VerticalBlocks;
-
+            
             // Command registration.
             CommandConfirmSettings = new RelayCommand<Window>(ConfirmSettings);
         }

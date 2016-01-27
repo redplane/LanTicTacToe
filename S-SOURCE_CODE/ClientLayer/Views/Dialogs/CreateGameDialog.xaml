@@ -8,10 +8,10 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:xtendedToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Start as host" 
-        Height="200" 
+        Title="Start as host"
         Width="300"
         ResizeMode="NoResize"
+        SizeToContent="Height"
         WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
@@ -19,35 +19,41 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <VirtualizingStackPanel>
-            
-            <TextBlock Text="Server port"/>
-            <xtendedToolkit:IntegerUpDown Value="{Binding ServerPort}"
-                                          Minimum="1024"
-                                          Maximum="30000"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            <VirtualizingStackPanel>
 
-            <TextBlock Text="Horizontal blocks"/>
-            <xtendedToolkit:IntegerUpDown Value="{Binding HorizontalBlocks}"
+                <TextBlock Text="IP Address"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Text="{Binding IpAddress}"/>
+                    <xtendedToolkit:IntegerUpDown Grid.Column="1" 
+                                                  Value="{Binding ServerPort}"
+                                                  Minimum="1024"
+                                                  Maximum="30000"/>
+                </Grid>
+
+                <TextBlock Text="Blocks"/>
+                <xtendedToolkit:IntegerUpDown Value="{Binding Blocks}"
                                           Minimum="1"
                                           Maximum="100"
                                           AllowTextInput="False"/>
 
-            <TextBlock Text="Vertical blocks"/>
-            <xtendedToolkit:IntegerUpDown Value="{Binding VerticalBlocks}"
-                                          Minimum="1"
-                                          Maximum="100"
-                                          AllowTextInput="False"/>
-            
-            <TextBlock Margin="0, 30, 0, 0"
+                <TextBlock Margin="0, 30, 0, 0"
                        Text="{Binding ErrorMessage, Mode=OneWay}"
                        TextAlignment="Center"
                        Foreground="Red"
                        FontWeight="Heavy"/>
-        </VirtualizingStackPanel>
+            </VirtualizingStackPanel>
+        </ScrollViewer>
 
         <Button Grid.Row="1"
                 Height="32"
