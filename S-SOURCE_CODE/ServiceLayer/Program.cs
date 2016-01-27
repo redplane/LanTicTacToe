@@ -1,6 +1,10 @@
 ﻿using System;
-using System.Net;
-using System.Net.Sockets;
+using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel;
+using System.ServiceModel.Description;
+using System.ServiceModel.Security;
+using ServiceLayer.Services;
+using SharedLayer.Interfaces;
 
 namespace ServiceLayer
 {
@@ -8,51 +12,35 @@ namespace ServiceLayer
     {
         static void Main(string[] args)
         {
-            int serverPort;
+            const string serviceUrl = "http://localhost:27020/TicTacToe";
 
-            #region Input section
+            // Create an isntance of service host which manages connection from clients.
+            var serviceHost = new ServiceHost(typeof(MainService), new Uri(serviceUrl));
+            
+            // Retrieve service credential from service host.
+            var serviceCredentials = serviceHost.Description.Behaviors.Find<ServiceCredentials>();
 
-            while (true)
+            // Instance hasn't been found. Create a new one.
+            if (serviceCredentials == null)
             {
-                try
-                {
-                    Console.Write("Server port = ");
-                    serverPort = int.Parse(Console.ReadLine());
-                    break;
-                }
-                catch
-                {
-                    Console.Write("Invalid server port. Please try again.");
-                    Console.ReadLine();
-                }
+                serviceCredentials = new ServiceCredentials();
+                serviceHost.Description.Behaviors.Add(serviceCredentials);
             }
 
-            #endregion
+            // Create an instance of ServiceMetadataBehavior class to define what server will behave.
+            var serviceMetadataBehavior = new ServiceMetadataBehavior();
+            serviceHost.Description.Behaviors.Add(serviceMetadataBehavior);
+            serviceHost.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexHttpBinding(),
+                "mex");
 
-            #region Socket section
+            // Create an instance of BasicHttpBinding with default initialization.
+            var wsDualHttpBinding = new WSDualHttpBinding();
+            serviceHost.AddServiceEndpoint(typeof(IMainService), wsDualHttpBinding, serviceUrl);
+            serviceHost.Open();
 
-            try
-            {
-                // Open a listener to listen to incomming connection.
-                var tcpServer = new TcpListener(IPAddress.Any, serverPort);
-                tcpServer.Start();
-                Console.WriteLine("Server started.");
-                Console.WriteLine("Waiting for incomming connections.");
 
-                //// Create a background thread which handles incomming connection from client-side.
-                //var listeningThread = new Thread(() => HandlingIncommingConnectionThread(tcpServer));
-                //listeningThread.IsBackground = true;
-                //listeningThread.Start();
-
-                Console.ReadLine();
-            }
-            catch (Exception exceptionInfo)
-            {
-                Console.WriteLine(exceptionInfo.Message);
-                Console.ReadLine();
-            }
-
-            #endregion
+            Console.WriteLine("Service has started at {0}.", serviceUrl);
+            Console.ReadLine();
         }
     }
 }
